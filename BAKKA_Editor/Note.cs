@@ -16,6 +16,13 @@ internal class BeatInfo
     {
         Measure = measure;
         Beat = beat;
+
+        if (beat >= 1920)
+        {
+            Measure++;
+            Beat %= 1920;
+        }
+
         MeasureDecimal = GetMeasureDecimal(measure, beat);
     }
 
@@ -23,6 +30,13 @@ internal class BeatInfo
     {
         Measure = (int) measure;
         Beat = (int) MathF.Round((measure - Measure) * 1920.0f);
+
+        if (Beat >= 1920)
+        {
+            Measure++;
+            Beat %= 1920;
+        }
+
         MeasureDecimal = measure;
     }
 
